@@ -1,0 +1,32 @@
+package baitap.btvn_31_07.system;
+
+import baitap.btvn_31_07.service.impl.CategoryManage;
+
+import java.util.Scanner;
+
+public class MenuCategory {
+    public void menu(CategoryManage categoryManage) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println("Menu");
+            System.out.println("1. Add category");
+            System.out.println("2. Update category");
+            System.out.println("3. Display all category");
+            System.out.println("0. Exit");
+            System.out.println("Enter your choice: ");
+            choice = Integer.parseInt(scanner.nextLine());
+            switch (choice) {
+                case 1:
+                    categoryManage.create();
+                    break;
+                case 2:
+                    categoryManage.update();
+                    break;
+                case 3:
+                    categoryManage.display();
+                    break;
+            }
+        } while (choice != 0);
+    }
+}
