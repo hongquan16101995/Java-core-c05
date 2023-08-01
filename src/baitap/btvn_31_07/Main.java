@@ -9,28 +9,34 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        MenuCategory menuCategory = new MenuCategory();
-        MenuProduct menuProduct = new MenuProduct();
-        CategoryManage categoryManage = new CategoryManage(scanner);
-        ProductManage productManage = new ProductManage(scanner,categoryManage);
         do {
-            System.out.println("Menu");
-            System.out.println("1. Menu product");
-            System.out.println("2. Menu category");
-            System.out.println("0. Exit");
-            System.out.println("Enter your choice: ");
-            int choice = Integer.parseInt(scanner.nextLine());
-            switch (choice) {
-                case 1:
-                    menuProduct.menu(productManage);
-                    break;
-                case 2:
-                    menuCategory.menu(categoryManage);
-                    break;
-                case 0:
-                    System.exit(0);
+            try {
+                Scanner scanner = new Scanner(System.in);
+                MenuCategory menuCategory = new MenuCategory();
+                MenuProduct menuProduct = new MenuProduct();
+                CategoryManage categoryManage = CategoryManage.getInstance(scanner);
+                ProductManage productManage = new ProductManage(scanner, categoryManage);
+                do {
+                    System.out.println("Menu");
+                    System.out.println("1. Menu product");
+                    System.out.println("2. Menu category");
+                    System.out.println("0. Exit");
+                    System.out.println("Enter your choice: ");
+                    int choice = Integer.parseInt(scanner.nextLine());
+                    switch (choice) {
+                        case 1:
+                            menuProduct.menu(productManage);
+                            break;
+                        case 2:
+                            menuCategory.menu();
+                            break;
+                        case 0:
+                            System.exit(0);
+                    }
+                } while (true);
+            } catch (Exception e) {
+                System.out.println();
             }
-        } while (true);
+        }while (true);
     }
 }

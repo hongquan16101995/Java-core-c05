@@ -5,8 +5,9 @@ import baitap.btvn_31_07.service.impl.CategoryManage;
 import java.util.Scanner;
 
 public class MenuCategory {
-    public void menu(CategoryManage categoryManage) {
+    public void menu() {
         Scanner scanner = new Scanner(System.in);
+        CategoryManage categoryManage = CategoryManage.getInstance(scanner);
         int choice;
         do {
             System.out.println("Menu");

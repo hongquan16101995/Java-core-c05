@@ -20,9 +20,6 @@ public class ProductManage implements IProductService, IOFile<Product> {
         products = read(PATH);
         this.scanner = scanner;
         this.categoryManage = categoryManage;
-        products.add(new Product(1, "pepsi", 7000, categoryManage.getCategories().get(0)));
-        products.add(new Product(2, "coca", 8000, categoryManage.getCategories().get(0)));
-        products.add(new Product(3, "banh", 15000, categoryManage.getCategories().get(1)));
         setIndex();
     }
 

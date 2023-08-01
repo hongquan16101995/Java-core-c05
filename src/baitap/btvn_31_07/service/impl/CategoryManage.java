@@ -14,12 +14,19 @@ public class CategoryManage implements ICategoryService, IOFile<Category> {
     private final Scanner scanner;
     private final String PATH = "C:\\Users\\ADMIN\\Desktop\\Java-core-c05\\src\\baitap\\btvn_31_07\\io\\category";
 
-    public CategoryManage(Scanner scanner) {
+    private static CategoryManage categoryManage;
+
+    private CategoryManage(Scanner scanner) {
         this.scanner = scanner;
         categories = read(PATH);
-        categories.add(new Category(1, "Drink"));
-        categories.add(new Category(2, "Food"));
         setIndex();
+    }
+
+    public static CategoryManage getInstance(Scanner scanner) {
+        if (categoryManage == null) {
+            categoryManage = new CategoryManage(scanner);
+        }
+        return categoryManage;
     }
 
     public List<Category> getCategories() {
